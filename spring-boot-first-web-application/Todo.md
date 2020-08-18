@@ -1,0 +1,5 @@
+Spring Boot Starter Parent
+Spring Boot Starter Web
+@SpringBootApplication
+Auto Configuration
+
