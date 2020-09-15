@@ -30,4 +30,10 @@ public class LoginController {
         return "login";
     }
 
+    @ResponseBody
+    @RequestMapping("/testResponseBody")
+    public String response() {
+        return "response body returned modified";
+    }
+
 }

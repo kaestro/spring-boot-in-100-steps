@@ -1,3 +1,9 @@
+### What's the first thing when you don't know why spring isn't working as you expect?
+
+- Go to spring reference documents page
+  * https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal
+
+
 ### What does @SpringBootApplication do?
 
 - It initializes SpringFramework.
@@ -27,6 +33,12 @@
 - You don't need to **restart the application** in order to pick up the changes.
 - e.g) If you've created a LoginController, the server will automatically restart.
 
+#### Why is my devtools not restarting the server?
+
+* If you're using eclipse, simply saving the file should be enough.
+* If you're using intellij, **you must build the project**.
+  - check spring boot reference document for further information.
+
 ### Why does localhost:8080/login doesn't show up after @RequestMapping("/login") has been added to the public method loginMessage?
 
 - Because the **java class LoginController** has to be picked up by spring.
@@ -48,7 +60,8 @@
 
 - It does the mapping
     * In this case, it maps "/login", redirect request to log in loginController.
-
+- uses a **view resolver**
+  - webapp is the basic directory
 ---
 
 # Step 03 Demystifying some of the Spring Boot Magic
@@ -154,3 +167,23 @@ whenever the request was given.
     - redirect model to the view
 * View
     - uses the model to render the data onto screen
+
+# Step 06: DispatcherServlet and Spring MVC flow
+
+* DispatcherServelet
+  - Also called **Front controller**
+  - Any request that comes to the web application will first go to the dispatcher servlet.
+  - Then dispatcher servlet **searches any mappings** available.
+    * in other words, **identifies the right controller**
+    * reads the application.properties
+  - Says OK that I have a method that matches the request in some of the
+  class file.
+    * ex) method named "login" inside the class "loginController"
+  - Makes the **model available to the view**, and executes it.
+  - **Returns** HTTP Response back.
+
+
+* Auto Configuration
+  - If something's added to the spring MVC, dispatcherServelet is updated automatically.
+  
+  
