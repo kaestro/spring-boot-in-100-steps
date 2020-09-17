@@ -186,4 +186,27 @@ whenever the request was given.
 * Auto Configuration
   - If something's added to the spring MVC, dispatcherServelet is updated automatically.
   
-  
+# Step 07: Your first HTML form
+
+* Form
+  - If method not specified, GET request is called
+  - you need to specify method by \<form method="***"\> if you want to specify it.
+    * ex) \<form method="post">
+    * When you're creating post mapping, it would be better for you to 
+    create another mapping view page.
+    
+ 
+# Step 08: Add hard-coded validation of userid and password
+
+* Add a **Service class** named "LoginService"
+  - To add Error credentials
+    * put some "errormessage" onto the **model** if it is invalid.
+
+## The magic of spring
+
+* In typical java without spring, you need to initialize the **LoginService
+ object** with constructors such as "new LoginService()".
+* With Spring, since LoginService object is something LoginController is 
+Dependent upon, **Dependency inversion** is injected through **@Autowired, 
+and @Component**.
+  - see class **AutoLoginService** inside the project for further details.
