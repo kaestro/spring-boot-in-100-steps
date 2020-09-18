@@ -207,6 +207,30 @@ whenever the request was given.
 * In typical java without spring, you need to initialize the **LoginService
  object** with constructors such as "new LoginService()".
 * With Spring, since LoginService object is something LoginController is 
-Dependent upon, **Dependency inversion** is injected through **@Autowired, 
+Dependent upon, **Dependency injection** is injected through **@Autowired, 
 and @Component**.
   - see class **AutoLoginService** inside the project for further details.
+
+# Step 09: The Magic of Spring
+
+### It's all about finding your components
+
+1. annotations
+  * **@Component**: Declare something should be **managed by spring**
+     - create a particular **bean** for particular class
+     - ex) @Controller is a *specialization* of @Compoment
+  * **@Service**: Anything that is a **business logic**
+  * **@Repository**: used in terms of a **data store**
+  * **@Autowired**: I want the object to be created by spring framework and wired automatically.
+    - similar to initialization.
+  * **@ComponentScan**: automatically build inside springbootapplication
+    - those under subpackage of springboot.web
+
+
+
+
+
+
+
+
+
