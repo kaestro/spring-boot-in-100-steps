@@ -1,3 +1,12 @@
+# CAUTIOUS
+
+To test the performance of this project,
+
+* for step 10 - 12:
+  1. go /testAuto
+  2. go /list-todos
+
+
 # Step10: Create TodoController and list-todos view. Make TodoService a @Service
 
 Implementation of simple TodoController which renders the list of list<todos>
@@ -44,3 +53,6 @@ for "in28Minutes" hardcoded only
   - you want to **store values across multiple requests**.
 * Use **@SessionAttributes**
   - specify **name of the attribute** you want to store in the session.
+  - to retrieve session attributes, use **model.get("$name of model put value")
+* for the amount of variables stored inside the session is the burden of
+server, you must be cautious with what to add as a session variable
