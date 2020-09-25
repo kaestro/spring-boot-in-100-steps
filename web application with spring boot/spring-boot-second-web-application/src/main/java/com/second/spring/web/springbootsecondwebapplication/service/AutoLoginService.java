@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class AutoLoginService {
 
     public boolean isValidUser(String userid, String password) {
-        return userid.equalsIgnoreCase("auto")
-                && password.equalsIgnoreCase("wired");
+        return userid.equalsIgnoreCase("in28minutes")
+                && password.equalsIgnoreCase("dummy");
     }
 }
