@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.print.DocFlavor;
 
 @Controller
-@SessionAttributes("welcomeName")
+@SessionAttributes({"welcomeName", "name"})
 public class LoginController {
 
 	/*

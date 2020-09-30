@@ -6,6 +6,10 @@
 
 <body>
     You're inside list-todos
-    <br>${todos}
+    <br>
+    Here are the list of ${welcomeName}'s todos:
+    ${todos}
+    </br>
+    <a href="/add-todo">Add a Todo</a>
 </body>
 </html>

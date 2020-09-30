@@ -5,7 +5,7 @@
 </head>
 
 <body>
-    <h1>WELCOME ${welcomeName}</h1>
+    <h1>WELCOME <b>${welcomeName}</b></h1>
     <h2>Your password is ${password}</h2>
 </body>
 </html>

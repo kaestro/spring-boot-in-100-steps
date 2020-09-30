@@ -4,6 +4,9 @@ To test the performance of this project,
 
 * for step 10 - 12:
   1. go /testAuto
+    * The id and passwords are
+      - in28minutes
+      - dummy
   2. go /list-todos
 
 
@@ -29,10 +32,10 @@ for "in28Minutes" hardcoded only
 
 ## Model 2
 
-* From the browser, **requests goes to the servlet**
+* From the browser, **requests go to the servlet**
 * Servlet
   - talks to the business logic
-  - finalize the model
+  - finalizes the model
   - make model available to view
   - Then view gets rendered to the browser
 * **Next request** from the browser would go to **another servlet**
@@ -56,3 +59,27 @@ for "in28Minutes" hardcoded only
   - to retrieve session attributes, use **model.get("$name of model put value")
 * for the amount of variables stored inside the session is the burden of
 server, you must be cautious with what to add as a session variable
+
+* suggesition:
+  - in the end, you will be needing a list of strings, that will be received inside
+    session attributes tag, somewhere to be imported
+    * ex) have a sessionLists.java, which holds session attributes string names.
+
+
+# Step 13: Add new Todo
+
+Q. Why can't you see **updated list-todos** when you've posted description
+from **add-todo**?
+
+  - It's because **list-todos** haven't been put as model yet
+  - You're calling another **list-todos.jsp view** from **TodoController**
+  - **Solution**
+    * put model to use again.
+      - Means you have to do the duplicate logic again.
+    * instead, redirect to specific url.
+      - i.e.) a view that has already taken the model put before
+      - in this example, redirect to **"/list-todos"**
+      - **How?**
+         - return **"redirect:/list-todos"**
+         instead of
+         - return "list-todos" which is a name of view
