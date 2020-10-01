@@ -83,3 +83,14 @@ from **add-todo**?
          - return **"redirect:/list-todos"**
          instead of
          - return "list-todos" which is a name of view
+         
+# Step 14: Display Todos(list) in a table using JSTL tag
+
+1. add jstl dependency into the maven(pom.xml)
+    - \<dependency>\<groupId>javax.servlet\</groupId>\<artifactId>jstl\</artifactId>\</dependency>
+    - Java Standard Tags Library
+2. TODO
+    - Basically, ${Todos} inside todo-list.jsp is hard to read
+    - using **JSTL for Loop**
+      * import the tag using <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    - We want to **repeat multitple \<trs>** for we can't know how many rows will come in
