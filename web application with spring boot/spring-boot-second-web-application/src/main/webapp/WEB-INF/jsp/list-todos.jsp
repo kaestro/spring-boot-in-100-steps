@@ -8,35 +8,41 @@
 </head>
 
 <body>
-    You're inside list-todos
-    <br>
-    <%--
-    Here are the list of ${welcomeName}'s todos:
-    ${todos}
-    </br>
-    --%>
-    <table>
-        <caption>Your Todos are</caption>
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Is it Done?</th>
-            </tr>
-        </thead>
-        <tbody>
-            JSTL For Loop
-            <c:forEach items="${todos}" var="todo">
+    <div class="container">
+        You're inside list-todos
+        <br>
+        <%--
+        Here are the list of ${welcomeName}'s todos:
+        ${todos}
+        </br>
+        --%>
+        <table class="table table-striped">
+            <caption>Your Todos are</caption>
+            <thead>
                 <tr>
-                    <td>${todo.desc}</td>
-                    <td>${todo.targetDate}</td>
-                    <td>${todo.done}</td>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Is it Done?</th>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                JSTL For Loop
+                <c:forEach items="${todos}" var="todo">
+                    <tr>
+                        <td>${todo.desc}</td>
+                        <td>${todo.targetDate}</td>
+                        <td>${todo.done}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 
-    </br>
-    <a href="/add-todo">Add a Todo</a>
+        </br>
+        <div><a class="button" href="/add-todo">Add a Todo</a></div>
+
+        <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link href="webjars/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </div>
 </body>
 </html>

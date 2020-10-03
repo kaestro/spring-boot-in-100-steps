@@ -1,4 +1,4 @@
-# CAUTIOUS
+# CAUTIONS
 
 To test the performance of this project,
 
@@ -93,4 +93,36 @@ from **add-todo**?
     - Basically, ${Todos} inside todo-list.jsp is hard to read
     - using **JSTL for Loop**
       * import the tag using <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+      * prefix="c" part means, tags starting with c: means it belongs to JSTL.
     - We want to **repeat multitple \<trs>** for we can't know how many rows will come in
+      * <c:forEach items="${name of items from model}" var="$name of variable you want to put"
+      * ex) <c:forEach items="${todos}" var="todo"> == for (auto todo : todos)
+
+
+# Step 15: Bootstrap for Page Formatting using webjars
+
+## Bootstrap
+
+* a **css framework**
+* going to use webjars for bootstrap and jquery
+* requires jquery
+* To use bootstrap classes, you need **div**
+  - ex) container, button, table
+
+
+## webjars
+
+* **To use js or css**, you typically store it inside the **resources** directory and import it into the jsp.
+* a **client-side web libraries** packaged into JAR files.
+* you can explicitly **manage web dependencies** in you applications.
+* bootstrap, jquery, ..., those which are webjars are under "webjars/jquery(or bootstrap)/version/..."
+
+## scripts
+
+### The \<script> tag at the bottom is processed as follows
+
+  1. html is requested through GET(ex. /list-todos)
+  2. The response contains the **urls of css/js**.
+      - I need these js and csses
+  3. Browser goes and creates additional requests for those.
+  
