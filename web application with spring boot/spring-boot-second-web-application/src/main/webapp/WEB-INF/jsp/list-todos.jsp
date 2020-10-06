@@ -5,6 +5,7 @@
 <head>
     <%-- <title>response to list-todos</title> --%>
     <title>Todos for ${welcomeName}</title>
+    <link href="webjars/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,6 +24,7 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Is it Done?</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +34,7 @@
                         <td>${todo.desc}</td>
                         <td>${todo.targetDate}</td>
                         <td>${todo.done}</td>
+                        <td><a type="button" class="btn btn-warning" href="/delete-todo?id=${todo.id}">DELETE</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -42,7 +45,6 @@
 
         <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
         <script src="webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link href="webjars/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </div>
 </body>
 </html>

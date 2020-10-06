@@ -126,3 +126,17 @@ from **add-todo**?
       - I need these js and csses
   3. Browser goes and creates additional requests for those.
   
+
+# Step 16: Let's delete Todo
+
+1. Create buttons for each th, which deletes the todo
+  - each button should have link to /delete-todo
+  - pass **todo.id** as a parameter
+    * ?id=${todo.id}
+2. Create **controller** which handles delete-todo
+  - this calls the **service** with the parameter
+  - then **redirect** to the current page
+
+
+# Step 17: Format Add Todo Page and Adding Basic HTML5 form validation
+
