@@ -1,5 +1,6 @@
 package com.second.spring.web.springbootsecondwebapplication.controller;
 
+import com.second.spring.web.springbootsecondwebapplication.model.Todo;
 import com.second.spring.web.springbootsecondwebapplication.service.AutoLoginService;
 import com.second.spring.web.springbootsecondwebapplication.service.LoginService;
 import com.second.spring.web.springbootsecondwebapplication.service.TodoService;
@@ -36,6 +37,17 @@ public class TodoController {
     @RequestMapping(value="/add-todo", method = RequestMethod.POST)
     public String addTodo(ModelMap model, @RequestParam String desc) {
         service.addTodo((String) model.get("welcomeName"), desc, new Date(), false);
+        return "redirect:/list-todos";
+    }
+
+    @RequestMapping(value="/add-todo-commandBean", method = RequestMethod.GET)
+    public String showAddTodoCommandBeanPage(ModelMap model) {
+        // model.addAttribute("todo", new Todo(0, (String) model.get("welcomeName"), "Default Desc", new Date(), false));
+        return "todo";
+    }
+    @RequestMapping(value="/add-todo-commandBean", method = RequestMethod.POST)
+    public String addTodoCommandBean(ModelMap model, Todo todo) {
+        service.addTodo((String) model.get("welcomeName"), todo.getDesc(), new Date(), false);
         return "redirect:/list-todos";
     }
 

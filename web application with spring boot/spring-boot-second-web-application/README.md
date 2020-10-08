@@ -140,3 +140,35 @@ from **add-todo**?
 
 # Step 17: Format Add Todo Page and Adding Basic HTML5 form validation
 
+1. Required="required"
+
+# Step 18: Part1 Validations with Hibernate Validator - Using Command Bean
+
+Do not trust the client side validation, but use Server side validation
+
+1. Command Bean(Form Backing Bean)
+  - What if you want to get multiple fields?
+    1. requestParams
+    2. use of Command Bean
+      - directly **map** input data from form into self-defined class or bean(Todo, in this case)
+2. Add Validation inside the Bean
+3. Use the Bean inside the controller
+4. Display Errors in View
+
+
+## 1. switching to command Bean
+
+1. Switch controller to use **command bean** instead of **requestparam**
+2. Add <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%> to the todo.jsp
+  - **spring framework form tag** is now available
+  - now instead of using **simple form**, you'll be using **<form:form> tag** inside jsp
+  - ~~add **commandName="todo"** inside the <form:form> tag of jsp.~~
+  - add **modelAttribute="todo"** inside the <form:form> tag. commandName doesn't exist in spring5
+    * todo is the name of bean you'll be using
+    * for this to work, **attirubte named todo** must be added to the model
+      - inside showAddTodoPage function, add
+        * model.addAttribute("todo", new Todo(0, (String) model.get("name"), "", new Date(), isDone=false))
+    * **each label and input** inside the add-todo page should have **path=** which is the name of the
+    **class variable**
+3. Add **Default Constructor** for the object you want to bind as bean
+  - in this case, it's class Todo
