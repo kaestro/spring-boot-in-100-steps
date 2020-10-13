@@ -7,11 +7,13 @@ import com.second.spring.web.springbootsecondwebapplication.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
@@ -24,7 +26,6 @@ public class TodoController {
     @RequestMapping(value="/list-todos", method = RequestMethod.GET)
     public String showLoginPage(ModelMap model) {
         String name = (String) model.get("welcomeName");
-        System.out.println(name);
         model.put("todos", service.retrieveTodos(name));
         return "list-todos";
     }
@@ -42,11 +43,15 @@ public class TodoController {
 
     @RequestMapping(value="/add-todo-commandBean", method = RequestMethod.GET)
     public String showAddTodoCommandBeanPage(ModelMap model) {
-        // model.addAttribute("todo", new Todo(0, (String) model.get("welcomeName"), "Default Desc", new Date(), false));
+        model.addAttribute("todo", new Todo(0, (String) model.get("welcomeName"), "Default Desc", new Date(), false));
         return "todo";
     }
     @RequestMapping(value="/add-todo-commandBean", method = RequestMethod.POST)
-    public String addTodoCommandBean(ModelMap model, Todo todo) {
+    public String addTodoCommandBean(ModelMap model, @Valid Todo todo, BindingResult result) {
+        if (result.hasErrors()) {
+            return "todo";
+        }
+
         service.addTodo((String) model.get("welcomeName"), todo.getDesc(), new Date(), false);
         return "redirect:/list-todos";
     }
