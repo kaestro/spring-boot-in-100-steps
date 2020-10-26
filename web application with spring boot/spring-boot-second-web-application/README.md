@@ -176,7 +176,7 @@ Do not trust the client side validation, but use Server side validation
 3. Add **Default Constructor** for the object you want to bind as bean
     - in this case, it's class Todo
 
-# Step 19: Part2 Using JSR 349 Validations
+# Step 18: Part2 Using JSR 349 Validations
 
 Part1 created command bean. Part2 will enable validation in the background. 
 
@@ -205,3 +205,45 @@ Part1 created command bean. Part2 will enable validation in the background.
     - Whenever @Valid is used, a bean named binding result is generated
     - ex) BindingResult result
     - if there exist an error, come back to the former page
+
+### Show error pop up message when hit validation error
+
+* <form:errors path="desc" cssClass="text-warning"/>
+    - bootstrap error style
+    - show error message concerning **description** field
+        * found in todo hibernate validator.jsp
+
+
+# Step 19: Updating a todo
+
+## Add Update button on a list-todos page
+
+## 3 miny steps
+
+1. add update button on existing list-todos view
+2. create controller method to handle the update(Get + POST request)
+3. create view for update
+
+### Add update button
+
+Rename the button of delete into update
+
+### Create update controller
+
+ for the update controller, if you're trying to reuse the previous **todo** view, 
+it is necessary that your newly attained Todo bean must be in the name of **todo** 
+or it will cause model attribute not found error.
+
+#### Current major problem
+
+* The **todo hibernate validator**'s form is only mapping **desc** field, 
+and this is causing errors.
+* Rest field is mapped as null
+* you need to send other fields in a form of **hidden field**
+
+#### Remaining problem
+
+* We've sent **id** field properly, but **timeStamp** is not coming properly 
+and needs some adjustment for simply handing it over causes javax.validation 
+errors.
+* Will be dealt on next step
