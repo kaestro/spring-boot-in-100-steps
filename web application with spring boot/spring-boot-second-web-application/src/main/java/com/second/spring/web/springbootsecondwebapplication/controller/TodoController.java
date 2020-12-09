@@ -5,15 +5,15 @@ import com.second.spring.web.springbootsecondwebapplication.service.AutoLoginSer
 import com.second.spring.web.springbootsecondwebapplication.service.LoginService;
 import com.second.spring.web.springbootsecondwebapplication.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +23,13 @@ public class TodoController {
 
     @Autowired
     TodoService service;
+
+    @InitBinder
+    protected void initBindier(WebDataBinder binder) {
+        // Date - dd/MM/yyyy
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }
 
     @RequestMapping(value="/list-todos", method = RequestMethod.GET)
     public String showLoginPage(ModelMap model) {
@@ -53,7 +60,9 @@ public class TodoController {
             return "todo hibernate validator";
         }
 
-        service.addTodo((String) model.get("welcomeName"), todo.getDesc(), new Date(), false);
+        // originally only updated to the recent date, now get the input data and update as it
+        // service.addTodo((String) model.get("welcomeName"), todo.getDesc(), new Date(), false);
+        service.addTodo((String) model.get("welcomeName"), todo.getDesc(), todo.getTargetDate(), false);
         return "redirect:/list-todos";
     }
 

@@ -247,3 +247,17 @@ and this is causing errors.
 and needs some adjustment for simply handing it over causes javax.validation 
 errors.
 * Will be dealt on next step
+
+# Step 20: Let's add a Target Date for Todo - Use initBinder to Handle Date Fields.
+
+## To update target date, you must add..
+
+* targetDate field to jsp
+* Use of **@InitBinder**
+  - your Date format inside java and the format inside the jsp doesn't match
+    * ex) if you read your date inside from jsp as text will put out things like
+    * Wed Dec 09 16:18:52 KST 2020
+  - after setting this, every date format are automatically updated
+* Change from format string to **date picker**
+  - bootstrap webpack
+  - bootstrap-datepicker
