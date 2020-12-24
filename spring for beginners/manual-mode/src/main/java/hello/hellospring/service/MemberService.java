@@ -10,7 +10,6 @@ import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -18,7 +17,6 @@ public class MemberService {
     // **************key point*****************
     // instead of creating new memberRepository, get instance from outside.
     // It's better for testing
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
